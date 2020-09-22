@@ -1,4 +1,4 @@
-#include <iostream>
+ï»¿#include <iostream>
 #include <thread>
 
 #define N 1000000
@@ -16,17 +16,19 @@ void SummingFunc(int number, int start, int end) {
 	cout << "Sum from " << number << "-th thread:" << s << endl;
 	return;
 }
-// ×èòàåì èç ïîòîêà ââîäà ñèìâîëû è ïèøåì èõ â ïîòîê âûâîäà.
+// Ð§Ð¸Ñ‚Ð°ÐµÐ¼ Ð¸Ð· Ð¿Ð¾Ñ‚Ð¾ÐºÐ° Ð²Ð²Ð¾Ð´Ð° ÑÐ¸Ð¼Ð²Ð¾Ð»Ñ‹ Ð¸ Ð¿Ð¸ÑˆÐµÐ¼ Ð¸Ñ… Ð² Ð¿Ð¾Ñ‚Ð¾Ðº Ð²Ñ‹Ð²Ð¾Ð´Ð°.
 int main()
 {
 	for (long long int i = 0; i < 999999; i++) {
 		a[i] = i + 1;
 	}
-	long long  int s = N / 10;
+	thread thrfirst[10];
+	long long  int s = N * 0.1;
 	for (int i = 0; i < 10; i++) {
-		thread thrfirst(SummingFunc, i, s*i, s*(i+1));
-		thrfirst.join();
+		thrfirst[i]=thread (SummingFunc, i, s*i, s*(i+1)-1);
+		thrfirst[i].join();
 		cout << "Sum total:" << sum << endl;
 	}
+
 	return 0;
 }
