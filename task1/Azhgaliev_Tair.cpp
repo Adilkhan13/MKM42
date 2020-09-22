@@ -18,7 +18,7 @@ void SummingFunc(int number, int start, int end)
 	cout << "Sum from " << number << "-th thread:" << s << endl;
 	return;
 }
-// ×èòàåì èç ïîòîêà ââîäà ñèìâîëû è ïèøåì èõ â ïîòîê âûâîäà.
+// Ğ§Ğ¸Ñ‚Ğ°ĞµĞ¼ Ğ¸Ğ· Ğ¿Ğ¾Ñ‚Ğ¾ĞºĞ° Ğ²Ğ²Ğ¾Ğ´Ğ° ÑĞ¸Ğ¼Ğ²Ğ¾Ğ»Ñ‹ Ğ¸ Ğ¿Ğ¸ÑˆĞµĞ¼ Ğ¸Ñ… Ğ² Ğ¿Ğ¾Ñ‚Ğ¾Ğº Ğ²Ñ‹Ğ²Ğ¾Ğ´Ğ°.
 int main()
 {
 	for (long long int i = 0; i < N; i++) 
