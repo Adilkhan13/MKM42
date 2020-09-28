@@ -2,8 +2,9 @@
 #include <thread>
 
 #define N 1000000
-#define p 10
-typedef long long int mytype;
+#define P 10
+
+typedef long long mytype;
 using namespace std;
 
 mytype sum = 1000000;
@@ -27,13 +28,13 @@ int main()
 {
 		a[i] = i + 1;
 	}
-	thread thrfirst[p];
+	thread thrfirst[P];
 	mytype s = N * 0.1;
-	for (int i = 0; i < p; i++) 
+	for (int i = 0; i < P; i++) 
 {
 		thrfirst[i]=thread (SummingFunc, i, s*i, s*(i+1)-1);
 	}
-	for (int i = 0; i < p; i++)
+	for (int i = 0; i < P; i++)
 {
 		thrfirst[i].join();
 	}
