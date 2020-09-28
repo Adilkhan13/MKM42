@@ -1,16 +1,17 @@
 #include <iostream>
 #include <thread>
 
-#define N 1000000
+#define N 1000000;
+typedef int mytype;
 using namespace std;
 
-long long int sum = 0;
-long long int a[N];
+mytype sum = 0;
+mytype int a[N];
 
 void SummingFunc(int number, int start, int end)
 {
-    long long int s = 0;
-    for (long long int i = start; i <= end; i++)
+    mytype s = 0;
+    for (mytype i = start; i <= end; i++)
     {
         s += a[i];
     }
@@ -21,18 +22,20 @@ void SummingFunc(int number, int start, int end)
 
 int main()
 {
-    for (long long int i = 0; i < N; i++)
+    for (mytype i = 0; i < N; i++)
     {
         a[i] = i + 1;
     }
-    thread threads[5];
-    long long int s = N * 0.1;
-    for (int i = 0; i < 5; i++)
+    thread threads[N];
+    mytype s = N * 0.1;
+    for (int i = 0; i < N; i++)
     {
         threads[i] = thread(SummingFunc, s * i, i, s * i - 1);
         threads[i].join();
-        cout << "Sum total:" << sum << endl;
     }
-
+    for (int i = 0; i < N; i++) {
+		threads[i].join();
+	}
+    cout << "Sum total:" << sum << endl;
     return 0;
 }
