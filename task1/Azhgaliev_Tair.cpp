@@ -2,15 +2,17 @@
 #include <thread>
 
 #define N 1000000
+#define p 10
+typedef long long int mytype;
 using namespace std;
 
-long long int sum = 1000000;
-long long int a[N] = {0};
+mytype sum = 1000000;
+mytype a[N] = {0};
 
 void SummingFunc(int number, int start, int end) 
 {
-	long long int s = 0;
-	for (long long int i = start; i <= end; i++) 
+	mytype s = 0;
+	for (mytype i = start; i <= end; i++) 
 {
 		s += a[i];
 	}
@@ -21,18 +23,21 @@ void SummingFunc(int number, int start, int end)
 // Читаем из потока ввода символы и пишем их в поток вывода.
 int main()
 {
-	for (long long int i = 0; i < N; i++) 
+	for (mytype i = 0; i < N; i++) 
 {
 		a[i] = i + 1;
 	}
-	thread thrfirst[10];
-	long long  int s = N * 0.1;
-	for (int i = 0; i < 10; i++) 
+	thread thrfirst[p];
+	mytype s = N * 0.1;
+	for (int i = 0; i < p; i++) 
 {
 		thrfirst[i]=thread (SummingFunc, i, s*i, s*(i+1)-1);
-		thrfirst[i].join();
-		cout << "Sum total:" << sum << endl;
 	}
+	for (int i = 0; i < p; i++)
+{
+		thrfirst[i].join();
+	}
+			cout << "Sum total:" << sum << endl;
 
 	return 0;
 }
