@@ -24,7 +24,7 @@ int main()
 		a[i] = i + 1;
 	}
 	thread thrfirst[n];
-	long long  int s = N * 0.1;
+	long long  int s = N /10;
 
 
 	for (int i = 0; i < n; i++) {
