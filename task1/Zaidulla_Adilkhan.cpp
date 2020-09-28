@@ -26,9 +26,11 @@ int main()
 	long long  int s = N * 0.1;
 	for (int i = 0; i < 10; i++) {
 		thrfirst[i]=thread (SummingFunc, i, s*i, s*(i+1)-1);
-		thrfirst[i].join();
+		
 		cout << "Sum total:" << sum << endl;
 	}
-
+	for (int i = 0; i < 10; i++) {
+		thrfirst[i].join();
+	}
 	return 0;
 }
