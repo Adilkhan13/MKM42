@@ -1,0 +1,41 @@
+#include <iostream>
+#include <thread>
+
+#define N 1000000
+#define N1 16
+
+typedef long long int q;
+using namespace std;
+
+
+q sum = N;
+q a[N] = { 0 };
+
+void SummingFunc(int num, int start, int end) {
+	q s = 0;
+	for (q i = start; i <= end; i++) {
+		s += a[i];
+	}
+	sum += s;
+	cout << "Sum from " << num << "-th thread:" << s << endl;
+	return;
+}
+// Читаем из потока ввода символы и пишем их в поток вывода.
+int main()
+{
+	for (q i = 0; i < N-1; i++) {
+		a[i] = i + 1;
+	}
+	thread thrfirst[N1];
+	q   s = N /N1;
+
+
+	for (int i = 0; i < N1; i++) {
+		thrfirst[i]=thread (SummingFunc, i, s*i, s*(i+1)-1);
+	}
+	for (int i = 0; i < N1; i++) {
+		thrfirst[i].join();
+	}
+	cout<<"Sum total:"<<sum<<endl;
+	return 0;
+}
