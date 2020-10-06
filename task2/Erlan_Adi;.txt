@@ -1,0 +1,41 @@
+#include<iostream>
+#include<mutex>
+#include<pthread.h>
+#include<cstdlib>
+
+int count=0;
+using namespace std;
+mutex m;
+
+void* Even(void *a)
+{
+   while(1)
+   {
+       m.lock();
+       if(count%2==0)
+       {
+          cout<<" EVEN "<<count<<endl;
+          count++;
+       }
+       if(count==20)
+           break;
+       m.unlock();
+   }
+}
+
+
+void* Odd(void *b)
+{
+    while(1)
+    {
+       m.lock();
+       if(count%2!=0)
+       {
+           cout<<" ODD "<<count<<endl;
+           count++;
+       }
+       if(count>20)
+          break;
+       m.unlock();
+    }
+ }
