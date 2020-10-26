@@ -17,7 +17,7 @@ int main()
 
     std::unique_ptr<int[]> A(new int[N * N]{
         1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4, 4});
-    std::unique_ptr<int[]> B(new int[M * N]{
+    std::unique_ptr<int[]> B(new int[N * M]{
         5, 6, 7, 8});
     std::unique_ptr<int[]> C(new int[N * N]{});
 
