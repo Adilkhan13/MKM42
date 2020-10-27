@@ -63,20 +63,20 @@ int main()
 
     cout << "=" << endl;
 
-    thread thr1;
-    thr1 = thread(threadFunction, 0, 0);
-    thread thr2;
-    thr2 = thread(threadFunction, 0, N / 2);
-    thread thr3;
-    thr3 = thread(threadFunction, N / 2, 0);
-    thread thr4;
-    thr4 = thread(threadFunction, N / 2, N / 2);
-    thr1.join();
-    thr2.join();
-    thr3.join();
-    thr4.join();
+    thread th1;
+    th1 = thread(threadFunction, 0, 0);
+    thread th2;
+    th2 = thread(threadFunction, 0, N / 2);
+    thread th3;
+    th3 = thread(threadFunction, N / 2, 0);
+    thread th4;
+    th4 = thread(threadFunction, N / 2, N / 2);
+    th1.join();
+    th2.join();
+    th3.join();
+    th4.join();
 
-    //ВЫВОД C
+    //Матрица C. Вывод
     for (int i = 0; i < N; i++)
     {
         for (int j = 0; j < N; j++)
